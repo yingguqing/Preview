@@ -1,9 +1,5 @@
-# ProvisionQL - Quick Look for ipa & provision
+# QLProvision - Quick Look for ipa & provision
 
-[![CI Status](https://github.com/yingguqing/Preview/workflows/CI/badge.svg?branch=master)](https://github.com/yingguqing/Preview/actions)
-[![Latest Release](https://img.shields.io/github/release/yingguqing/Preview.svg)](https://github.com/yingguqing/Preview/releases/latest)
-[![License](https://img.shields.io/github/license/yingguqing/Preview.svg)](LICENSE.md)
-![Platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)
 
 ![Thumbnails example](https://raw.github.com/yingguqing/Preview/master/Screenshots/1.png)
 
