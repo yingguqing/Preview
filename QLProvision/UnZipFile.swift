@@ -16,13 +16,14 @@ class UnZip {
     var provisionData:Data?
     var iconData:Data?
     var entitlements: Entitlements?
-    lazy var currentFold:URL = URL(fileURLWithPath: Paths.TeamPath(isDeleteOld: true))
+    private lazy var currentFold:URL = URL(fileURLWithPath: Paths.TeamPath(isDeleteOld: true))
     
     init(url:URL) {
         self.url = url
     }
     
-    func run() throws {
+    func  run() throws {
+        defer{ clear() }
         // 解压Info.plist和描述文件
         var regexs = [try! Regex("Payload/.*?\\.app/Info\\.plist"), try! Regex("Payload/.*?\\.app/embedded\\.mobileprovision")]
         let paths = try Zip.unzipFile(url, destination: currentFold, outRegexs: regexs)
@@ -70,6 +71,10 @@ class UnZip {
             iconName = legacyIcon
         }
         return iconName
+    }
+    
+    func clear() {
+        currentFold.path.pathRemove()
     }
 }
 

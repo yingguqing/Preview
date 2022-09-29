@@ -325,7 +325,8 @@
 /* Begin PBXShellScriptBuildPhase section */
 		4DC266FE28E4547F00007CDE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			alwaysOutOfDate = 1;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -336,9 +337,9 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "ProductPath=$(dirname $CONFIGURATION_BUILD_DIR)\nProductPath=\"$ProductPath/$CONFIGURATION/${PRODUCT_NAME}\"\nDisPath=\"/Applications/${PRODUCT_NAME}\"\n\ncp -f \"$ProductPath\" \"$DisPath\"\n\ncodesign -f -s - --deep \"$DisPath\"\nfi\n";
+			shellScript = "#if [ $CONFIGURATION == Release ]; then\n#    exit\n#fi\nProductPath=$(dirname $CONFIGURATION_BUILD_DIR)\nProductPath=\"$ProductPath/$CONFIGURATION/${PRODUCT_NAME}.app\"\nDisPath=\"/Applications/${PRODUCT_NAME}.app\"\n\ncp -f \"$ProductPath\" \"$DisPath\"\n\ncodesign -f -s - --deep \"$DisPath\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

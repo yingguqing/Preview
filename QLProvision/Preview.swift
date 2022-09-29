@@ -75,17 +75,23 @@ class Preview {
             let dirFiles = try FileManager.default.contentsOfDirectory(atPath: appsDir.path)
             guard let path = dirFiles.first else { return }
             let appURL = appsDir.appendingPathComponent(path, isDirectory: true)
-            provisionData = try Data(contentsOf: appURL.appendingPathComponent("embedded.mobileprovision"))
-            appPlist = try Data(contentsOf: appURL.appendingPathComponent("Info.plist"))
-            guard let bundleExecutable: String = appPlist?.xmlToDictionary?.value(key: "CFBundleExecutable") else { return }
-            
-            let binaryPath = appURL.path / bundleExecutable
-            entitlements = try EntitlementsReader(binaryPath).readEntitlements()
-            /*
-             let out = Process.execute(CommandLine.CodeSign, arguments: ["-d", binaryPath, "--entitlements", ":-"])
-             codesignEntitlementsData = Data(out.output.utf8)
-             */
-            entitlements = try EntitlementsReader(binaryPath).readEntitlements()
+            let contentsURL = appURL / "Contents"
+            if contentsURL.path.directoryExists { // macOS
+                // macOS的Archive查看有问题。暂时得不到解决
+                provisionData = try Data(contentsOf: contentsURL.appendingPathComponent("embedded.provisionprofile"))
+                appPlist = try Data(contentsOf: contentsURL.appendingPathComponent("Info.plist"))
+                guard let bundleExecutable: String = appPlist?.xmlToDictionary?.value(key: "CFBundleExecutable") else { return }
+                
+                let binaryPath = contentsURL.path / "MacOS" / bundleExecutable
+                entitlements = try EntitlementsReader(binaryPath).readEntitlements()
+            } else {
+                provisionData = try Data(contentsOf: appURL.appendingPathComponent("embedded.mobileprovision"))
+                appPlist = try Data(contentsOf: appURL.appendingPathComponent("Info.plist"))
+                guard let bundleExecutable: String = appPlist?.xmlToDictionary?.value(key: "CFBundleExecutable") else { return }
+                
+                let binaryPath = appURL.path / bundleExecutable
+                entitlements = try EntitlementsReader(binaryPath).readEntitlements()
+            }
         } else if dataType == .Ipa {
             provisionData = unZip?.provisionData
             appPlist = unZip?.appPlist
@@ -294,7 +300,7 @@ class Preview {
          }
          */
         if let entitlements = entitlements {
-            let dictionaryFormatted = displayKeyAndValue(value: entitlements)
+            let dictionaryFormatted = displayKeyAndValue(value: entitlements.values)
             synthesizedInfo["EntitlementsFormatted"] = "<pre>\(dictionaryFormatted)</pre>"
         } else if let dic: [String: Any] = propertyList.value(key: "Entitlements") {
             getTaskAllow = dic.value(key: "get-task-allow") ?? false

@@ -28,12 +28,6 @@ enum Paths {
     static let ProvisioningProfilesPath: String = UserHomePath / "Library/MobileDevice/Provisioning Profiles"
     /// 创建沙盒的临时目录
     static func TeamPath(fold: String = "", isDeleteOld: Bool = true) -> String {
-/*
-        var path = (NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).last ?? NSTemporaryDirectory()) / "\(Bundle.main.bundleIdentifier ?? "快速查看")"
-        path = path / fold
-        path.createFilePath(isDelOldPath: isDeleteOld)
-        return path
-*/
         var path = NSTemporaryDirectory() / "\(Bundle.main.bundleIdentifier ?? "快速查看")"
         path = path / fold
         print(path)
