@@ -70,6 +70,15 @@ class Preview {
     
     // 读取文件内部信息
     func readFile() throws {
+/*
+        if dataType == .App {
+            let contentsURL = url.appendingPathComponent("Contents")
+            guard !contentsURL.path.directoryExists else {
+                throw Errors.MacOSInvalid
+            }
+            
+        } else
+*/
         if dataType == .Archive {
             let appsDir = url.appendingPathComponent("Products/Applications/")
             let dirFiles = try FileManager.default.contentsOfDirectory(atPath: appsDir.path)
@@ -78,12 +87,15 @@ class Preview {
             let contentsURL = appURL / "Contents"
             if contentsURL.path.directoryExists { // macOS
                 // macOS的Archive查看有问题。暂时得不到解决
+                throw Errors.MacOSInvalid
+/*
                 provisionData = try Data(contentsOf: contentsURL.appendingPathComponent("embedded.provisionprofile"))
                 appPlist = try Data(contentsOf: contentsURL.appendingPathComponent("Info.plist"))
                 guard let bundleExecutable: String = appPlist?.xmlToDictionary?.value(key: "CFBundleExecutable") else { return }
                 
                 let binaryPath = contentsURL.path / "MacOS" / bundleExecutable
                 entitlements = try EntitlementsReader(binaryPath).readEntitlements()
+*/
             } else {
                 provisionData = try Data(contentsOf: appURL.appendingPathComponent("embedded.mobileprovision"))
                 appPlist = try Data(contentsOf: appURL.appendingPathComponent("Info.plist"))
@@ -472,9 +484,9 @@ class Preview {
     /// 获取测试设备
     func formattedDevices(_ value: [String]) -> [String: String] {
         var devices = "<table>\n<tr><th></th><th>UDID</th></tr>\n"
-        let specialUUIDs = specialDevices.filter({ value.contains($0.uuid) }).sorted(by: { $0.name < $1.name })
+        let specialUUIDs = specialDevices.filter({ value.contains($0.uuid.uppercased()) }).sorted(by: { $0.name < $1.name })
         if !specialUUIDs.isEmpty {
-            let html = specialUUIDs.map({ "<tr><td><font color=\"#FF00FF\">\($0.name)</font></td><td>\($0.uuid)</td></tr>\n" }).joined()
+            let html = specialUUIDs.map({ "<tr><td><font color=\"#FF00FF\">\($0.name)</font></td><td>\($0.uuid.uppercased())</td></tr>\n" }).joined()
             devices.append(html)
             // 添加一行空白做为分隔
             devices.append("<tr><td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>\n")
@@ -485,12 +497,12 @@ class Preview {
         var currentPrefix = ""
         for device in sortArray {
             var displayPrefix = ""
-            let devicePrefix = String(device.first!)
+            let devicePrefix = String(device.first!).uppercased()
             if currentPrefix != devicePrefix {
                 currentPrefix = devicePrefix
                 displayPrefix = "\(devicePrefix) ➞ "
             }
-            devices.append("<tr><td>\(displayPrefix)</td><td>\(device)</td></tr>\n")
+            devices.append("<tr><td>\(displayPrefix)</td><td>\(device.uppercased())</td></tr>\n")
         }
         devices.append("</table>\n")
         let result = [

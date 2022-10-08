@@ -12,12 +12,14 @@ enum DataType: String {
     case Provision_iOS = "com.apple.mobileprovision"
     case Provision_macOS = "com.apple.provisionprofile"
     case Archive = "com.apple.xcode.archive"
+    //case App = "com.apple.application-bundle"
 }
 
 let APP_CODE_PREVIEWER = Bundle.main.bundleIdentifier ?? "com.yingguqing.Preview.QLProvision"
 enum Errors {
     static let Invalid = NSError(domain: APP_CODE_PREVIEWER, code: 400, userInfo: [NSLocalizedDescriptionKey: "文件不是ipa、archive或mobileprovision中的任意一种"])
     static let ReadFaild = NSError(domain: APP_CODE_PREVIEWER, code: 401, userInfo: [NSLocalizedDescriptionKey: "文件解析失败"])
+    static let MacOSInvalid = NSError(domain: APP_CODE_PREVIEWER, code: 402, userInfo: [NSLocalizedDescriptionKey: "macOS的app和archive不能查看"])
 }
 
 enum Paths {
