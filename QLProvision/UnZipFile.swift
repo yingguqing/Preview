@@ -20,6 +20,7 @@ class UnZip {
     
     init(url:URL) {
         self.url = url
+        //Zip.addCustomFileExtension("ipa")
     }
     
     func  run() throws {

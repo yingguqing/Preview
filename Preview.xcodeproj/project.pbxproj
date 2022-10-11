@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D25506928F17B2E00EDDCD8 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4B0D28D9B5FA007B32EA /* Util.swift */; };
+		4D25506A28F17B2F00EDDCD8 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4B0D28D9B5FA007B32EA /* Util.swift */; };
 		4D31D35B28E1431300D23C7F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4B1728DAAB77007B32EA /* UserDefaults.swift */; };
 		4D31D35D28E1435B00D23C7F /* ProvisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31D35C28E1435B00D23C7F /* ProvisionView.swift */; };
 		4D31D36028E151DD00D23C7F /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31D35F28E151DD00D23C7F /* DeviceView.swift */; };
@@ -17,7 +19,6 @@
 		4D4D4AF928D9AC57007B32EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4D4AF828D9AC57007B32EA /* Assets.xcassets */; };
 		4D4D4AFC28D9AC57007B32EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4D4AFB28D9AC57007B32EA /* Preview Assets.xcassets */; };
 		4D4D4B0A28D9AE5A007B32EA /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4B0928D9AE5A007B32EA /* View.swift */; };
-		4D4D4B0E28D9B5FA007B32EA /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4B0D28D9B5FA007B32EA /* Util.swift */; };
 		4D4D4B1028D9B6E2007B32EA /* AppScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4B0F28D9B6E2007B32EA /* AppScene.swift */; };
 		4D4D4B1828DAAB77007B32EA /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4B1728DAAB77007B32EA /* UserDefaults.swift */; };
 		4D4D4B5928DAF03C007B32EA /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4D4B3428DAE4AE007B32EA /* Quartz.framework */; };
@@ -29,7 +30,6 @@
 		4D4D4B7628DAF4A4007B32EA /* defaultIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D4D4B7328DAF4A4007B32EA /* defaultIcon.png */; };
 		4D4D4B7B28DAFC6A007B32EA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4B6E28DAF2FB007B32EA /* String.swift */; };
 		4D4D4B7C28DAFC71007B32EA /* NSTask-execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4B6A28DAF2A1007B32EA /* NSTask-execute.swift */; };
-		4D4D4B8428DB0882007B32EA /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4B0D28D9B5FA007B32EA /* Util.swift */; };
 		4D5DE6F628E17E4E0009907A /* QLProvision.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4D4D4B7D28DAFE65007B32EA /* QLProvision.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4DC2667128E1BA7F00007CDE /* UnZipFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2667028E1BA7F00007CDE /* UnZipFile.swift */; };
 		4DC2667328E1BAD900007CDE /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2667228E1BAD900007CDE /* Regex.swift */; };
@@ -348,12 +348,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D25506928F17B2E00EDDCD8 /* Util.swift in Sources */,
 				4D31D36228E15B8B00D23C7F /* Device.swift in Sources */,
 				4D4D4B1028D9B6E2007B32EA /* AppScene.swift in Sources */,
 				4D4D4AF728D9AC56007B32EA /* MainView.swift in Sources */,
 				4D31D36028E151DD00D23C7F /* DeviceView.swift in Sources */,
 				4D4D4B0A28D9AE5A007B32EA /* View.swift in Sources */,
-				4D4D4B0E28D9B5FA007B32EA /* Util.swift in Sources */,
 				4D4D4B6F28DAF2FB007B32EA /* String.swift in Sources */,
 				4D31D35D28E1435B00D23C7F /* ProvisionView.swift in Sources */,
 				4D4D4B1828DAAB77007B32EA /* UserDefaults.swift in Sources */,
@@ -367,7 +367,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DF8BC2F28DD4EDE00694D17 /* Helper.swift in Sources */,
-				4D4D4B8428DB0882007B32EA /* Util.swift in Sources */,
 				4D4D4B5C28DAF03C007B32EA /* PreviewViewController.swift in Sources */,
 				4D31D36328E15D0000D23C7F /* Device.swift in Sources */,
 				4D4D4B7C28DAFC71007B32EA /* NSTask-execute.swift in Sources */,
@@ -378,6 +377,7 @@
 				4DC2668428E2942700007CDE /* ApplicationBinary.swift in Sources */,
 				4DF8BC2D28DD4EDE00694D17 /* Preview.swift in Sources */,
 				4DC2668228E2942700007CDE /* EntitlementsReader.swift in Sources */,
+				4D25506A28F17B2F00EDDCD8 /* Util.swift in Sources */,
 				4DC2668528E2942700007CDE /* Entitlements.swift in Sources */,
 				4DC2667328E1BAD900007CDE /* Regex.swift in Sources */,
 			);
@@ -606,7 +606,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview.QLProvision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -638,7 +638,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview.QLProvision;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -11,11 +11,9 @@ import Foundation
 struct AppSignerTaskOutput {
     let output: String
     let status: Int32
-    let data:Data
     
-    init(status: Int32, data:Data, output:String) {
+    init(status: Int32, output:String) {
         self.status = status
-        self.data = data
         self.output = output
     }
 }
@@ -27,14 +25,10 @@ private extension Process {
         self.standardOutput = pipe
         self.standardError = pipe
         let pipeFile = pipe.fileHandleForReading
-        print(self.launchPath ?? "")
-        print(self.arguments?.joined(separator: " ") ?? "")
         self.launch()
         
         var msgs = String()
-        var data:Data = Data()
         while self.isRunning {
-            data = pipeFile.availableData
             if let msg = String(data: pipeFile.availableData, encoding: .utf8) {
                 process?(msg)
                 msgs.append(msg)
@@ -44,7 +38,7 @@ private extension Process {
         pipeFile.closeFile()
         self.terminate()
         
-        return AppSignerTaskOutput(status: self.terminationStatus, data: data, output: msgs)
+        return AppSignerTaskOutput(status: self.terminationStatus, output: msgs)
     }
     
     func execute(_ launchPath: String, workingDirectory: String? = nil, arguments: [String]? = nil, process: ((String) -> Void)? = nil) -> AppSignerTaskOutput {
@@ -61,13 +55,6 @@ private extension Process {
     func executeAsync(_ launchPath: String, workingDirectory: String? = nil, arguments: [String]? = nil, process: ((String) -> Void)? = nil, complete: ((AppSignerTaskOutput) -> Void)?) {
         self.launchPath = launchPath
         self.arguments = arguments
-        /*
-         if let oldPath = ProcessInfo.processInfo.environment["PATH"] {
-             self.environment = [
-                 "PATH": oldPath.appending(":/Users/xiankaizheng/.rvm/rubies/ruby-2.5.1/bin")
-             ]
-         }
-         */
         if workingDirectory != nil {
             self.currentDirectoryPath = workingDirectory!
         }

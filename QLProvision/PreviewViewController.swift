@@ -18,7 +18,7 @@ class PreviewViewController: NSViewController, QLPreviewingController {
 
     override func loadView() {
         super.loadView()
-        preferredContentSize = NSSize(width: 630, height: 800)
+        preferredContentSize = NSSize(width: 640, height: 800)
         updateViewConstraints()
         
     }
