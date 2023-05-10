@@ -31,6 +31,11 @@
 		4D4D4B7B28DAFC6A007B32EA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4B6E28DAF2FB007B32EA /* String.swift */; };
 		4D4D4B7C28DAFC71007B32EA /* NSTask-execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4B6A28DAF2A1007B32EA /* NSTask-execute.swift */; };
 		4D5DE6F628E17E4E0009907A /* QLProvision.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4D4D4B7D28DAFE65007B32EA /* QLProvision.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4D853C0E2A0B779700496E8A /* ImageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D853C082A0B779700496E8A /* ImageSet.swift */; };
+		4D853C0F2A0B779700496E8A /* AssetsCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D853C0A2A0B779700496E8A /* AssetsCatalog.swift */; };
+		4D853C102A0B779700496E8A /* CoreUI_Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D853C0B2A0B779700496E8A /* CoreUI_Swift.swift */; };
+		4D853C122A0B779700496E8A /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D853C0D2A0B779700496E8A /* Operation.swift */; };
+		4D853C142A0B77EA00496E8A /* CoreUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D853C132A0B77EA00496E8A /* CoreUI.framework */; };
 		4DC2667128E1BA7F00007CDE /* UnZipFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2667028E1BA7F00007CDE /* UnZipFile.swift */; };
 		4DC2667328E1BAD900007CDE /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2667228E1BAD900007CDE /* Regex.swift */; };
 		4DC2668228E2942700007CDE /* EntitlementsReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2667E28E2942700007CDE /* EntitlementsReader.swift */; };
@@ -91,6 +96,13 @@
 		4D4D4B7228DAF4A4007B32EA /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template.html; sourceTree = "<group>"; };
 		4D4D4B7328DAF4A4007B32EA /* defaultIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultIcon.png; sourceTree = "<group>"; };
 		4D4D4B7D28DAFE65007B32EA /* QLProvision.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QLProvision.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D853C062A0B779700496E8A /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		4D853C082A0B779700496E8A /* ImageSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSet.swift; sourceTree = "<group>"; };
+		4D853C092A0B779700496E8A /* CoreUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreUI.h; sourceTree = "<group>"; };
+		4D853C0A2A0B779700496E8A /* AssetsCatalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsCatalog.swift; sourceTree = "<group>"; };
+		4D853C0B2A0B779700496E8A /* CoreUI_Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreUI_Swift.swift; sourceTree = "<group>"; };
+		4D853C0D2A0B779700496E8A /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		4D853C132A0B77EA00496E8A /* CoreUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreUI.framework; path = ../../../../../System/Library/PrivateFrameworks/CoreUI.framework; sourceTree = "<group>"; };
 		4DC2667028E1BA7F00007CDE /* UnZipFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnZipFile.swift; sourceTree = "<group>"; };
 		4DC2667228E1BAD900007CDE /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		4DC2667E28E2942700007CDE /* EntitlementsReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitlementsReader.swift; sourceTree = "<group>"; };
@@ -115,6 +127,7 @@
 			files = (
 				4DC266FD28E4378E00007CDE /* Zip in Frameworks */,
 				4D4D4B5928DAF03C007B32EA /* Quartz.framework in Frameworks */,
+				4D853C142A0B77EA00496E8A /* CoreUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +141,6 @@
 				4D4D4B5A28DAF03C007B32EA /* QLProvision */,
 				4D4D4B3328DAE4AE007B32EA /* Frameworks */,
 				4D4D4AF228D9AC56007B32EA /* Products */,
-				4D4D4B7D28DAFE65007B32EA /* QLProvision.appex */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				4D4D4AF128D9AC56007B32EA /* 快速查看.app */,
+				4D4D4B7D28DAFE65007B32EA /* QLProvision.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,6 +186,7 @@
 		4D4D4B3328DAE4AE007B32EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D853C132A0B77EA00496E8A /* CoreUI.framework */,
 				4D4D4B3428DAE4AE007B32EA /* Quartz.framework */,
 			);
 			name = Frameworks;
@@ -189,6 +203,8 @@
 				4DC2667028E1BA7F00007CDE /* UnZipFile.swift */,
 				4D4D4B5B28DAF03C007B32EA /* PreviewViewController.swift */,
 				4D4D4B5F28DAF03C007B32EA /* PreviewViewController.xib */,
+				4D853C072A0B779700496E8A /* Acextract */,
+				4D853C062A0B779700496E8A /* module.modulemap */,
 				4D4D4B7028DAF4A4007B32EA /* Resources */,
 				4D4D4B6228DAF03C007B32EA /* Info.plist */,
 				4D4D4B6328DAF03C007B32EA /* QLProvision.entitlements */,
@@ -203,6 +219,18 @@
 				4D4D4B7328DAF4A4007B32EA /* defaultIcon.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		4D853C072A0B779700496E8A /* Acextract */ = {
+			isa = PBXGroup;
+			children = (
+				4D853C082A0B779700496E8A /* ImageSet.swift */,
+				4D853C092A0B779700496E8A /* CoreUI.h */,
+				4D853C0A2A0B779700496E8A /* AssetsCatalog.swift */,
+				4D853C0B2A0B779700496E8A /* CoreUI_Swift.swift */,
+				4D853C0D2A0B779700496E8A /* Operation.swift */,
+			);
+			path = Acextract;
 			sourceTree = "<group>";
 		};
 		4DC2667D28E2942700007CDE /* SwiftEntitlements */ = {
@@ -374,12 +402,16 @@
 				4DC2667128E1BA7F00007CDE /* UnZipFile.swift in Sources */,
 				4D4D4B7B28DAFC6A007B32EA /* String.swift in Sources */,
 				4DF8BC2E28DD4EDE00694D17 /* NSImage.swift in Sources */,
+				4D853C122A0B779700496E8A /* Operation.swift in Sources */,
 				4DC2668428E2942700007CDE /* ApplicationBinary.swift in Sources */,
+				4D853C0E2A0B779700496E8A /* ImageSet.swift in Sources */,
 				4DF8BC2D28DD4EDE00694D17 /* Preview.swift in Sources */,
 				4DC2668228E2942700007CDE /* EntitlementsReader.swift in Sources */,
+				4D853C0F2A0B779700496E8A /* AssetsCatalog.swift in Sources */,
 				4D25506A28F17B2F00EDDCD8 /* Util.swift in Sources */,
 				4DC2668528E2942700007CDE /* Entitlements.swift in Sources */,
 				4DC2667328E1BAD900007CDE /* Regex.swift in Sources */,
+				4D853C102A0B779700496E8A /* CoreUI_Swift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,7 +646,12 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = mac_any_dev;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/QLProvision";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Debug;
 		};
@@ -646,7 +683,12 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = mac_any_dev;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/QLProvision";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Release;
 		};

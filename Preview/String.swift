@@ -27,6 +27,9 @@ extension String {
         }
     }
 
+    var toFileURL:URL {
+        URL(fileURLWithPath:self)
+    }
     /// 获得文件的扩展类型（不带'.'）
     var pathExtension: String {
         return (self as NSString).pathExtension

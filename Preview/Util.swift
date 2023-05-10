@@ -128,4 +128,27 @@ extension NSColor {
     }
 }
 
-
+/// 获取指定文件夹下符合扩展名要求的所有文件名
+/// - parameter path: 文件夹路径
+/// - parameter filterTypes: 扩展名过滤类型(注：大小写敏感)
+/// - parameter isFindSubpaths: 是否递归查找
+/// - parameter isFull: 是否拼接成完整目录
+/// - returns: 所有文件名数组
+func findFiles(path: String, filterTypes: [String] = [], isFindSubpaths: Bool = true, isFull: Bool = true) -> [String] {
+    do {
+        var files = [String]()
+        if isFindSubpaths { // 递归查找
+            if let array = FileManager.default.subpaths(atPath: path) {
+                files = array.filter({ !$0.lastPathComponent.hasPrefix(".") })
+            }
+        } else {
+            files = try FileManager.default.contentsOfDirectory(atPath: path).filter({ !$0.lastPathComponent.hasPrefix(".") })
+        }
+        if isFull {
+            files = files.map { path / $0 }
+        }
+        guard filterTypes.count > 0 else { return files }
+        return files.filter { return filterTypes.contains($0.pathExtension) }
+    } catch {}
+    return []
+}

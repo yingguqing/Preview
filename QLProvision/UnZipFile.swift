@@ -16,7 +16,8 @@ class UnZip {
     var provisionData:Data?
     var iconData:Data?
     var entitlements: Entitlements?
-    private lazy var currentFold:URL = URL(fileURLWithPath: Paths.TeamPath(isDeleteOld: true))
+    private lazy var TeamPath =  Paths.TeamPath(isDeleteOld: true)
+    private lazy var currentFold:URL = TeamPath.toFileURL
     
     init(url:URL) {
         self.url = url
@@ -26,7 +27,7 @@ class UnZip {
     func  run() throws {
         defer{ clear() }
         // 解压Info.plist和描述文件
-        var regexs = [try! Regex("Payload/.*?\\.app/Info\\.plist"), try! Regex("Payload/.*?\\.app/embedded\\.mobileprovision")]
+        var regexs = [try! Regex("Payload/.*?\\.app/Info\\.plist"), try! Regex("Payload/.*?\\.app/embedded\\.mobileprovision"), try! Regex(#"Payload/.*?\.app/Assets\.car"#)]
         let paths = try Zip.unzipFile(url, destination: currentFold, outRegexs: regexs)
         if let plistPath = paths.first(where: { $0.lastPathComponent == "Info.plist" }) {
             appPlist = try? Data(contentsOf: URL(fileURLWithPath: plistPath))
@@ -44,10 +45,17 @@ class UnZip {
         }
         // 从Info.plist获取Icon的名称，优先使用120的
         let iconName = mainIconNameForApp(appPropertyList)
-        regexs = [try! Regex("Payload/.*?\\.app/\(iconName).*?")]
-        // 解压icon，优先使用高倍图
-        guard let iconPath = try Zip.unzipFile(url, destination: currentFold, outRegexs: regexs).sorted(by: >).first else { return }
-        iconData = try? Data(contentsOf: URL(fileURLWithPath: iconPath))
+        if !iconName.isEmpty {
+            regexs = [try! Regex("Payload/.*?\\.app/\(iconName).*?")]
+            // 解压icon，优先使用高倍图
+            if let iconPath = try Zip.unzipFile(url, destination: currentFold, outRegexs: regexs).sorted(by: >).first  {
+                iconData = try? Data(contentsOf: URL(fileURLWithPath: iconPath))
+            }
+        }
+        if iconData == nil, let path = paths.first(where: { $0.lastPathComponent == "Assets.car" }) {
+            // 如果主目录没有AppIcon，就解析Assets.car文件
+            acextractAssets(path)
+        }
     }
     
     /// 从Info.plist里获取ipa包的图标名称
@@ -72,6 +80,22 @@ class UnZip {
             iconName = legacyIcon
         }
         return iconName
+    }
+    
+    /// 解析Assets.car文件，获取其中的AppIcon
+    private func acextractAssets(_ path:String) {
+        let folder = path.deletingLastPathComponent
+        let outPath = folder / "Assets"
+        do {
+            let assetsCatalog = try AssetsCatalog(path: path)
+            let extract = ExtractOperation(path: outPath, names: ["AppIcon60x60@3x~iphone", "AppIcon60x60@3x~ipad", "AppIcon60x60@2x~iphone", "AppIcon60x60@2x~ipad"])
+            try assetsCatalog.performOperation(operation: extract)
+             let icon = findFiles(path: outPath, filterTypes: ["png"], isFindSubpaths: false, isFull: true).compactMap({ try? Data(contentsOf: $0.toFileURL) }).max(by: { $0.count > $1.count })
+            guard let icon else { return }
+            iconData = icon
+        } catch {
+            print("解析Assets文件失败：\(error)")
+        }
     }
     
     func clear() {
