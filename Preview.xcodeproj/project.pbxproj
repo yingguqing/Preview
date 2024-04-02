@@ -14,6 +14,7 @@
 		4D31D36028E151DD00D23C7F /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31D35F28E151DD00D23C7F /* DeviceView.swift */; };
 		4D31D36228E15B8B00D23C7F /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31D36128E15B8B00D23C7F /* Device.swift */; };
 		4D31D36328E15D0000D23C7F /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31D36128E15B8B00D23C7F /* Device.swift */; };
+		4D48C06D2BF6F7D8008A956C /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D48C06C2BF6F7D8008A956C /* Network.framework */; };
 		4D4D4AF528D9AC56007B32EA /* PreviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4AF428D9AC56007B32EA /* PreviewApp.swift */; };
 		4D4D4AF728D9AC56007B32EA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D4AF628D9AC56007B32EA /* MainView.swift */; };
 		4D4D4AF928D9AC57007B32EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4D4AF828D9AC57007B32EA /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 		4D31D35C28E1435B00D23C7F /* ProvisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvisionView.swift; sourceTree = "<group>"; };
 		4D31D35F28E151DD00D23C7F /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
 		4D31D36128E15B8B00D23C7F /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		4D48C06C2BF6F7D8008A956C /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
 		4D4D4AF128D9AC56007B32EA /* 快速查看.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "快速查看.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D4D4AF428D9AC56007B32EA /* PreviewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewApp.swift; sourceTree = "<group>"; };
 		4D4D4AF628D9AC56007B32EA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				4DC266FD28E4378E00007CDE /* Zip in Frameworks */,
 				4D4D4B5928DAF03C007B32EA /* Quartz.framework in Frameworks */,
 				4D853C142A0B77EA00496E8A /* CoreUI.framework in Frameworks */,
+				4D48C06D2BF6F7D8008A956C /* Network.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +189,7 @@
 		4D4D4B3328DAE4AE007B32EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D48C06C2BF6F7D8008A956C /* Network.framework */,
 				4D853C132A0B77EA00496E8A /* CoreUI.framework */,
 				4D4D4B3428DAE4AE007B32EA /* Quartz.framework */,
 			);
@@ -296,7 +300,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					4D4D4AF028D9AC56007B32EA = {
 						CreatedOnToolsVersion = 14.0;
@@ -367,7 +371,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "#if [ $CONFIGURATION == Release ]; then\n#    exit\n#fi\nProductPath=$(dirname $CONFIGURATION_BUILD_DIR)\nProductPath=\"$ProductPath/$CONFIGURATION/${PRODUCT_NAME}.app\"\nDisPath=\"/Applications/${PRODUCT_NAME}.app\"\n\ncp -f \"$ProductPath\" \"$DisPath\"\n\ncodesign -f -s - --deep \"$DisPath\"\n\n";
+			shellScript = "if [ $CONFIGURATION == Release ]; then\n    exit\nfi\nProductPath=$(dirname $CONFIGURATION_BUILD_DIR)\nProductPath=\"$ProductPath/$CONFIGURATION/${PRODUCT_NAME}.app\"\nDisPath=\"/Applications/${PRODUCT_NAME}.app\"\n\ncp -f \"$ProductPath\" \"$DisPath\"\n\ncodesign -f -s - --deep \"$DisPath\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -441,6 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -470,9 +475,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -501,6 +508,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -530,9 +538,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -561,11 +571,13 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Preview/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = BX45AJXQR7;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Preview/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -575,12 +587,16 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview;
 				PRODUCT_NAME = "快速查看";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = mac_any_dev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				SYSTEM_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -595,11 +611,13 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Preview/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = BX45AJXQR7;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Preview/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -609,12 +627,16 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview;
 				PRODUCT_NAME = "快速查看";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = mac_any_dev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				SYSTEM_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
@@ -625,6 +647,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = BX45AJXQR7;
 				ENABLE_HARDENED_RUNTIME = NO;
@@ -640,6 +663,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0.0;
 				OTHER_CODE_SIGN_FLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview.QLProvision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -647,9 +671,11 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/QLProvision";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks,
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
 			};
@@ -662,6 +688,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = BX45AJXQR7;
 				ENABLE_HARDENED_RUNTIME = NO;
@@ -677,6 +704,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0.0;
 				OTHER_CODE_SIGN_FLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview.QLProvision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -684,9 +712,11 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/QLProvision";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks,
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
 			};
