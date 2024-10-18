@@ -13,6 +13,7 @@ struct PreviewApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                
         }
         AppScene(window: .Provision)
     }

@@ -13,10 +13,17 @@ struct ProvisionView: View {
     @State var devices: [Device] = Device.userDevices()
     @State var sorting = [KeyPathComparator(\Device.name)]
     @State var selecting = Set<Device.ID>()
-    @State var newDevice:Device? = nil
-    @State var selectDevice:Device?
+    @State var newDevice: Device? = nil
+    @State var selectDevice: Device?
     @State var message = ""
-    private let xcodeQLPath = "/Applications/Xcode.app/Contents/Library/QuickLook/DVTProvisioningProfileQuicklookGenerator.qlgenerator"
+    private let xcodeQLPaths = [
+        "/Applications/Xcode.app/Contents/Library/QuickLook/DVTProvisioningProfileQuicklookGenerator.qlgenerator",
+        "/Applications/Xcode.app/Contents/PlugIns/ProvisoningProfileQuicklookExtension.appex"
+    ]
+
+    private var xcodeQLExists: Bool {
+        !xcodeQLPaths.filter({ $0.fileExists }).isEmpty
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -69,20 +76,20 @@ struct ProvisionView: View {
                 .niceButton()
                 Spacer()
             }
-            if xcodeQLPath.fileExists {
-                HStack {
-                    Text("描述文件优先使用Xcode的Quick Look插件，如有需要，删除Xcode的插件即可。")
-                    Spacer()
-                    Button("打开", action: {
-                        NSWorkspace.shared.selectFile(xcodeQLPath, inFileViewerRootedAtPath: "")
-                    })
-                }
-                .padding(.top, 20)
+            HStack {
+                Text("描述文件优先使用Xcode的Quick Look插件，如有需要，删除Xcode的插件即可。")
+                Spacer()
+                Button("打开", action: {
+                    guard let path = xcodeQLPaths.first(where: { $0.fileExists }) else { return }
+                    NSWorkspace.shared.selectFile(path, inFileViewerRootedAtPath: "")
+                })
             }
+            .disabled(!xcodeQLExists)
+            .padding(.top, 20)
         }
         .sheet(item: $selectDevice, onDismiss: {
             defer { newDevice = nil }
-            guard let newDevice = newDevice, newDevice.isValid, newDevice.isNew  else { return }
+            guard let newDevice = newDevice, newDevice.isValid, newDevice.isNew else { return }
             devices.append(newDevice)
         }, content: { device in
             DeviceView().environmentObject(device)
@@ -107,7 +114,6 @@ struct ProvisionView: View {
         Device.save(devices: devices)
     }
 }
-
 
 struct ProvisionView_Previews: PreviewProvider {
     static var previews: some View {

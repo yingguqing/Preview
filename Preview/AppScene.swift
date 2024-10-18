@@ -20,10 +20,10 @@ enum WindowType: String, CaseIterable {
     }
     
     /// 子功能对应的UI界面
-    var view: AnyView {
+    @ViewBuilder var view: some View {
         switch self {
             case .Provision:
-                return AnyView(ProvisionView())
+                ProvisionView()
         }
     }
     
