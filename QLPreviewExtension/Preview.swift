@@ -11,7 +11,6 @@ import WebKit
 
 class Preview {
     let url: URL
-    let handler: (Error?) -> Void
     let dataType: DataType
     var provisionData: Data?
     var appPlist: Data?
@@ -31,54 +30,45 @@ class Preview {
         return html ?? ""
     }()
 
-    init?(url: URL, handler: @escaping (Error?) -> Void) {
-        do {
-            let resourceValues = try url.resourceValues(forKeys: [.typeIdentifierKey])
-            guard let UTI = resourceValues.typeIdentifier, let dataType = DataType(rawValue: UTI) else {
-                handler(Errors.Invalid)
-                return nil
-            }
-            self.handler = handler
-            self.url = url
-            self.dataType = dataType
-            self.unZip = dataType == .Ipa ? UnZip(url: url) : nil
-            try self.unZip?.run()
-        } catch {
-            handler(error)
-            return nil
+    init(url: URL) throws {
+        let resourceValues = try url.resourceValues(forKeys: [.typeIdentifierKey])
+        guard let UTI = resourceValues.typeIdentifier, let dataType = DataType(rawValue: UTI) else {
+            throw Errors.Invalid
         }
+        self.url = url
+        self.dataType = dataType
+        self.unZip = dataType == .Ipa ? UnZip(url: url) : nil
+        try unZip?.run()
     }
 
-    func run(web: WKWebView) {
-        do {
-            try readFile()
-            // 读取标题
-            readTitle()
-            // 读取app信息
-            readAppInfo()
-            // 读取描述文件信息
-            readProvisionInfo()
-            // 读取文件大小，创建时间
-            readFileInfo()
-            // 将所有信息在网页上显示
-            showHtml(web: web)
-            handler(nil)
-        } catch {
-            handler(error)
+    func run() throws -> String {
+        try readFile()
+        // 读取标题
+        readTitle()
+        // 读取app信息
+        readAppInfo()
+        // 读取描述文件信息
+        readProvisionInfo()
+        // 读取文件大小，创建时间
+        readFileInfo()
+        // 将所有信息在网页上显示
+        synthesizedInfo.forEach {
+            html = html.replacingOccurrences(of: "__\($0.0)__", with: $0.1)
         }
+        return html
     }
     
-    // 读取文件内部信息
+    /// 读取文件内部信息
     func readFile() throws {
-/*
-        if dataType == .App {
-            let contentsURL = url.appendingPathComponent("Contents")
-            guard !contentsURL.path.directoryExists else {
-                throw Errors.MacOSInvalid
-            }
+        /*
+         if dataType == .App {
+             let contentsURL = url.appendingPathComponent("Contents")
+             guard !contentsURL.path.directoryExists else {
+                 throw Errors.MacOSInvalid
+             }
             
-        } else
-*/
+         } else
+         */
         if dataType == .Archive {
             let appsDir = url.appendingPathComponent("Products/Applications/")
             let dirFiles = try FileManager.default.contentsOfDirectory(atPath: appsDir.path)
@@ -88,14 +78,14 @@ class Preview {
             if contentsURL.path.directoryExists { // macOS
                 // macOS的Archive查看有问题。暂时得不到解决
                 throw Errors.MacOSInvalid
-/*
-                provisionData = try Data(contentsOf: contentsURL.appendingPathComponent("embedded.provisionprofile"))
-                appPlist = try Data(contentsOf: contentsURL.appendingPathComponent("Info.plist"))
-                guard let bundleExecutable: String = appPlist?.xmlToDictionary?.value(key: "CFBundleExecutable") else { return }
+                /*
+                 provisionData = try Data(contentsOf: contentsURL.appendingPathComponent("embedded.provisionprofile"))
+                 appPlist = try Data(contentsOf: contentsURL.appendingPathComponent("Info.plist"))
+                 guard let bundleExecutable: String = appPlist?.xmlToDictionary?.value(key: "CFBundleExecutable") else { return }
                 
-                let binaryPath = contentsURL.path / "MacOS" / bundleExecutable
-                entitlements = try EntitlementsReader(binaryPath).readEntitlements()
-*/
+                 let binaryPath = contentsURL.path / "MacOS" / bundleExecutable
+                 entitlements = try EntitlementsReader(binaryPath).readEntitlements()
+                 */
             } else {
                 provisionData = try Data(contentsOf: appURL.appendingPathComponent("embedded.mobileprovision"))
                 appPlist = try Data(contentsOf: appURL.appendingPathComponent("Info.plist"))
@@ -135,13 +125,13 @@ class Preview {
         if bundleName.isEmpty {
             bundleName = appPropertyList.value(key: "CFBundleName") ?? ""
         }
-        self.synthesizedInfo["CFBundleName"] = bundleName
-        self.synthesizedInfo["CFBundleIdentifier"] = appPropertyList.value(key: "CFBundleIdentifier") ?? ""
-        self.synthesizedInfo["CFBundleShortVersionString"] = appPropertyList.value(key: "CFBundleShortVersionString") ?? ""
-        self.synthesizedInfo["CFBundleVersion"] = appPropertyList.value(key: "CFBundleVersion") ?? ""
+        synthesizedInfo["CFBundleName"] = bundleName
+        synthesizedInfo["CFBundleIdentifier"] = appPropertyList.value(key: "CFBundleIdentifier") ?? ""
+        synthesizedInfo["CFBundleShortVersionString"] = appPropertyList.value(key: "CFBundleShortVersionString") ?? ""
+        synthesizedInfo["CFBundleVersion"] = appPropertyList.value(key: "CFBundleVersion") ?? ""
         let sdkName = appPropertyList.value(key: "DTSDKName") ?? ""
-        self.synthesizedInfo["DTSDKName"] = sdkName
-        self.synthesizedInfo["MinimumOSVersion"] = appPropertyList.value(key: "MinimumOSVersion") ?? ""
+        synthesizedInfo["DTSDKName"] = sdkName
+        synthesizedInfo["MinimumOSVersion"] = appPropertyList.value(key: "MinimumOSVersion") ?? ""
         var appTransportSecurityFormatted = "No exceptions"
         if let appTransportSecurity: [String: Any] = appPropertyList.value(key: "NSAppTransportSecurity") {
             let localizedKeys = [
@@ -372,18 +362,6 @@ class Preview {
             synthesizedInfo["FileInfo"] = "\(size), 创建于 \(dateFormatter.string(from: date))"
         } else {
             synthesizedInfo["FileInfo"] = ""
-        }
-    }
-    
-    /// 将所有信息以网页的形式显示
-    private func showHtml(web: WKWebView) {
-        synthesizedInfo.forEach {
-            html = html.replacingOccurrences(of: "__\($0.0)__", with: $0.1)
-        }
-        try? html.write(toFile: "/Users/zhouziyuan/Desktop/1.html", atomically: true, encoding: .utf8)
-        let showHtml = self.html
-        DispatchQueue.main.async {
-            web.loadHTMLString(showHtml, baseURL: nil)
         }
     }
     

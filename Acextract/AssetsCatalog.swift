@@ -26,12 +26,12 @@
 import Foundation
 import CoreUI
 
-enum AssetsCatalogError: Error {
+public enum AssetsCatalogError: Error {
     case FileDoesntExists
     case CannotOpenAssetsCatalog
 }
 
-struct AssetsCatalog {
+public struct AssetsCatalog {
     // MARK: Properties
     let filePath: String
     let catalog: CUICatalog
@@ -51,7 +51,7 @@ struct AssetsCatalog {
     }
 
     // MARK: Initialization
-    init(path: String) throws {
+    public init(path: String) throws {
         let fp = (path as NSString).expandingTildeInPath
         guard FileManager.default.fileExists(atPath: fp) else {
             throw AssetsCatalogError.FileDoesntExists
@@ -87,7 +87,7 @@ struct AssetsCatalog {
     }
 }
 
-extension AssetsCatalog {
+public extension AssetsCatalog {
     func performOperation(operation: Operation) throws {
         try operation.read(catalg: self)
     }

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1500"
+   LastUpgradeVersion = "1600"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -15,9 +16,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4D4D4B5728DAF03C007B32EA"
-               BuildableName = "QLProvision.appex"
-               BlueprintName = "QLProvision"
+               BlueprintIdentifier = "CE85E2E52647F5FD009E0DC3"
+               BuildableName = "QLPreviewExtension.appex"
+               BlueprintName = "QLPreviewExtension"
                ReferencedContainer = "container:Preview.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +30,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4D4D4AF028D9AC56007B32EA"
-               BuildableName = "&#x5feb;&#x901f;&#x67e5;&#x770b;.app"
+               BlueprintIdentifier = "CE85E2CC2647F5D8009E0DC3"
+               BuildableName = "Preview.app"
                BlueprintName = "Preview"
                ReferencedContainer = "container:Preview.xcodeproj">
             </BuildableReference>
@@ -41,9 +42,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -60,13 +60,13 @@
       <RemoteRunnable
          runnableDebuggingMode = "0"
          BundleIdentifier = "com.yingguqing.Preview"
-         RemotePath = "/Applications/&#x5feb;&#x901f;&#x67e5;&#x770b;.app">
+         RemotePath = "/Applications/Preview.app">
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4D4D4AF028D9AC56007B32EA"
-            BuildableName = "&#x5feb;&#x901f;&#x67e5;&#x770b;.app"
+            BlueprintIdentifier = "CE85E2CC2647F5D8009E0DC3"
+            BuildableName = "Preview.app"
             BlueprintName = "Preview"
             ReferencedContainer = "container:Preview.xcodeproj">
          </BuildableReference>
@@ -84,8 +84,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4D4D4AF028D9AC56007B32EA"
-            BuildableName = "&#x5feb;&#x901f;&#x67e5;&#x770b;.app"
+            BlueprintIdentifier = "CE85E2CC2647F5D8009E0DC3"
+            BuildableName = "Preview.app"
             BlueprintName = "Preview"
             ReferencedContainer = "container:Preview.xcodeproj">
          </BuildableReference>

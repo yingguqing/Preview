@@ -29,14 +29,14 @@ import CoreUI
 import UniformTypeIdentifiers
 
 // MARK: - Protocols
-protocol Operation {
+public protocol Operation {
     func read(catalg: AssetsCatalog) throws -> Void
 }
 
-struct CompoundOperation: Operation {
+public struct CompoundOperation: Operation {
     let operations: [Operation]
 
-    func read(catalg: AssetsCatalog) throws {
+    public func read(catalg: AssetsCatalog) throws {
         for operation in operations {
             try operation.read(catalg: catalg)
         }
@@ -52,20 +52,20 @@ enum ExtractOperationError: Error {
     case CannotCreatePDFDocument
 }
 
-struct ExtractOperation: Operation {
+public struct ExtractOperation: Operation {
 
     // MARK: Properties
     let outputPath: String
     let names:[String]
 
     // MARK: Initialization
-    init(path: String, names:[String]) {
+    public init(path: String, names:[String]) {
         outputPath = (path as NSString).expandingTildeInPath
         self.names = names
     }
 
     // MARK: Methods
-    func read(catalg: AssetsCatalog) throws {
+    public func read(catalg: AssetsCatalog) throws {
         // Create output folder if needed
         try checkAndCreateFolder()
         // For every image set and every named image.
@@ -174,5 +174,32 @@ private extension CUINamedImage {
         if !mutableData.write(toFile: filePath, atomically: true) {
             throw ExtractOperationError.CannotCreatePDFDocument
         }
+    }
+}
+
+private extension String {
+    /// 获得文件的扩展类型（不带'.'）
+    var pathExtension: String {
+        return (self as NSString).pathExtension
+    }
+
+    /// 从路径中获得完整的文件名（带后缀）
+    var lastPathComponent: String {
+        return (self as NSString).lastPathComponent
+    }
+
+    /// 删除最后一个/后面的内容 可以是整个文件名,可以是文件夹名
+    var deletingLastPathComponent: String {
+        return (self as NSString).deletingLastPathComponent
+    }
+
+    /// 获得文件名（不带后缀）
+    var deletingPathExtension: String {
+        return (self as NSString).deletingPathExtension
+    }
+
+    /// 删除后缀的文件名
+    var fileNameWithoutExtension: String {
+        return self.lastPathComponent.deletingPathExtension
     }
 }

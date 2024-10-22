@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Acextract
 import Zip
 @_implementationOnly import Minizip
 

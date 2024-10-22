@@ -1,5 +1,5 @@
 
 module CoreUI [system][extern_c] {
-    header "Acextract/CoreUI.h"
+    header "CoreUI.h"
     export *
 }
