@@ -31,8 +31,6 @@
 		4DE5186D2CC77A1000357084 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518482CC7798D00357084 /* UserDefaults.swift */; };
 		4DE5186E2CC77A1000357084 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518492CC7798D00357084 /* Util.swift */; };
 		4DE518752CC77ABC00357084 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE518742CC77ABC00357084 /* Network.framework */; };
-		4DE5188B2CC77BBE00357084 /* Acextract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE518852CC77BBE00357084 /* Acextract.framework */; };
-		4DE5188C2CC77BBE00357084 /* Acextract.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE518852CC77BBE00357084 /* Acextract.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4DE5189E2CC77BFD00357084 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4DE5189D2CC77BFD00357084 /* InfoPlist.xcstrings */; };
 		4DE5189F2CC77C2700357084 /* Acextract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE518852CC77BBE00357084 /* Acextract.framework */; };
 		4DE518A02CC77C2700357084 /* Acextract.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE518852CC77BBE00357084 /* Acextract.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -45,13 +43,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4DE518892CC77BBE00357084 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE85E2C52647F5D8009E0DC3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4DE518842CC77BBE00357084;
-			remoteInfo = Acextract;
-		};
 		4DE518A12CC77C2700357084 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CE85E2C52647F5D8009E0DC3 /* Project object */;
@@ -69,17 +60,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4DE518912CC77BBE00357084 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				4DE5188C2CC77BBE00357084 /* Acextract.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4DE518A32CC77C2700357084 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,7 +163,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DE5188B2CC77BBE00357084 /* Acextract.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,14 +304,11 @@
 				CE85E2CA2647F5D8009E0DC3 /* Frameworks */,
 				CE85E2CB2647F5D8009E0DC3 /* Resources */,
 				CE85E2F82647F5FD009E0DC3 /* Embed App Extensions */,
-				4DE518912CC77BBE00357084 /* Embed Frameworks */,
-				4DE518C62CC77F3E00357084 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				CE85E2F32647F5FD009E0DC3 /* PBXTargetDependency */,
-				4DE5188A2CC77BBE00357084 /* PBXTargetDependency */,
 			);
 			name = Preview;
 			packageProductDependencies = (
@@ -400,7 +376,7 @@
 				4DE5183D2CC7793800357084 /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = CE85E2CE2647F5D8009E0DC3 /* Products */;
+			productRefGroup = CE85E2C42647F5D8009E0DC3;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -437,26 +413,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		4DE518C62CC77F3E00357084 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ $CONFIGURATION == Release ]; then\n    exit\nfi\nProductPath=$(dirname $CONFIGURATION_BUILD_DIR)\nProductPath=\"$ProductPath/$CONFIGURATION/${PRODUCT_NAME}.app\"\nDisPath=\"/Applications/${PRODUCT_NAME}.app\"\n\ncp -f \"$ProductPath\" \"$DisPath\"\n\ncodesign -f -s - --deep \"$DisPath\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4DE518812CC77BBE00357084 /* Sources */ = {
@@ -505,11 +461,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4DE5188A2CC77BBE00357084 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4DE518842CC77BBE00357084 /* Acextract */;
-			targetProxy = 4DE518892CC77BBE00357084 /* PBXContainerItemProxy */;
-		};
 		4DE518A22CC77C2700357084 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4DE518842CC77BBE00357084 /* Acextract */;
@@ -529,7 +480,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -553,8 +504,9 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tpjewel.gmios.Acextract;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.preview.Acextract;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -573,7 +525,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -597,8 +549,9 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tpjewel.gmios.Acextract;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.preview.Acextract;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Acextract";
@@ -732,10 +685,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Preview/Preview.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Preview/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = BX45AJXQR7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Preview/Info.plist;
@@ -747,6 +702,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = mac_any_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -760,10 +716,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Preview/Preview.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Preview/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = BX45AJXQR7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Preview/Info.plist;
@@ -775,6 +733,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = mac_any_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
@@ -784,8 +743,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = QLPreviewExtension/QLPreviewExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = BX45AJXQR7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = QLPreviewExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -797,6 +758,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview.QLPreviewExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = mac_any_dev;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -806,8 +768,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = QLPreviewExtension/QLPreviewExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = BX45AJXQR7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = QLPreviewExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -819,6 +783,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview.QLPreviewExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = mac_any_dev;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
