@@ -1,7 +1,5 @@
 # QLProvision - Quick Look for ipa & provision
 
-本项目基于[ProvisionQL](https://github.com/ealeksandrov/ProvisionQL)。只是适配了新版本系统。
-
 
 ![Thumbnails example](https://raw.github.com/yingguqing/Preview/master/Screenshots/1.png)
 
@@ -39,7 +37,7 @@ Supported file types:
 
 ### Acknowledgments
 
-Initially based on [ProvisionQL](https://github.com/yingguqing/Preview).
+Initially based on [ProvisionQL](https://github.com/ealeksandrov/ProvisionQL).
 
 ### Tutorials based on this example:
 
