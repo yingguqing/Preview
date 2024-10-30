@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @Environment(\.openWindow) private var openWindow
     var body: some View {
         VStack {
             AppIcon()
@@ -29,7 +30,7 @@ struct MainView: View {
                 .multilineTextAlignment(.center)
                 .padding(.top, 30)
             Button(action: {
-                WindowType.Provision.open()
+                openWindow(id: "Provision")
             }) {
                 Text("显示添加测试设备特殊显示设置")
                     .frame(height: 6)

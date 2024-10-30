@@ -36,7 +36,7 @@ private extension Process {
         }
         
         pipeFile.closeFile()
-        self.terminate()
+        waitUntilExit()
         
         return AppSignerTaskOutput(status: self.terminationStatus, output: msgs)
     }

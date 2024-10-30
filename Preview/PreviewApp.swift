@@ -13,9 +13,12 @@ struct PreviewApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                
         }
-        AppScene(window: .Provision)
+        .windowResizability(.contentSize)
+        WindowGroup(id: "Provision") {
+            ProvisionView()
+        }
+        .windowResizability(.contentSize)
     }
 }
 
@@ -27,17 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.mainMenu?.items.filter({ itemTitles.contains($0.title) }).forEach {
             NSApp.mainMenu?.removeItem($0)
         }
-        NSApp.windows.first?.setContentSize(CGSize(width: 400, height: 600))
     }
-
-    // 重新设置window默认显示宽高
-    /*
-     func application(_ application: NSApplication, open _: [URL]) {
-         let titles = WindowType.allCases.map { $0.title }
-         guard let window = application.windows.filter({ titles.contains($0.title) }).last, let type = WindowType.allCases.filter({ $0.title == window.title }).first else { return }
-         window.setContentSize(type.defaultSize)
-     }
-     */
 
     // 关闭界面时,true为同时关闭程序，false为最小化程序
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {

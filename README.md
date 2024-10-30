@@ -1,5 +1,7 @@
 # QLProvision - Quick Look for ipa & provision
 
+本项目基于[ProvisionQL](https://github.com/ealeksandrov/ProvisionQL)。只是适配了新版本系统。
+
 
 ![Thumbnails example](https://raw.github.com/yingguqing/Preview/master/Screenshots/1.png)
 
@@ -14,7 +16,10 @@ Xcode now have its own mobileprovision Quick Look plugin. Since it's application
 ProvisionQL will still work for ipa and xcarchive, but if you prefer it also for mobileprovision, just delete Xcode's QL plugin here:
 
 ```
+# before xcode 16
 /Applications/Xcode.app/Contents/Library/QuickLook/DVTProvisioningProfileQuicklookGenerator.qlgenerator
+# xcode 16
+/Applications/Xcode.app/Contents/PlugIns/ProvisoningProfileQuicklookExtension.appex
 ```
 And run
 
@@ -45,13 +50,13 @@ Initially based on [ProvisionQL](https://github.com/yingguqing/Preview).
 
 ### Xcode project
 
-Just clone the repository, open `Preview.xcodeproj` and build active target. Shell script will place app in `/Applications` and open `快速查看.app`;
+Just clone the repository, open `Preview.xcodeproj` and build active target. Shell script will place app in `/Applications` and open `Preview.app`;
 
 ### Manual
 
-* download archive with latest version from the [Releases](https://github.com/yingguqing/Preview/releases/latest) page;
-* move `快速查看.app` to `/Applications/快速查看.app);
-* open `快速查看.app`;
+* build project;
+* move `Preview.app` to `/Applications/Preview.app);
+* open `Preview.app`;
 * open `System Preferences` to `Extensions` page
 * select `Quick Look` and check `QLProvision`
 

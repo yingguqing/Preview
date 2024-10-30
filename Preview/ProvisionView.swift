@@ -87,6 +87,8 @@ struct ProvisionView: View {
             .disabled(!xcodeQLExists)
             .padding(.top, 20)
         }
+        .padding()
+        .frame(width: 600, height: 400)
         .sheet(item: $selectDevice, onDismiss: {
             defer { newDevice = nil }
             guard let newDevice = newDevice, newDevice.isValid, newDevice.isNew else { return }
@@ -94,8 +96,6 @@ struct ProvisionView: View {
         }, content: { device in
             DeviceView().environmentObject(device)
         })
-        .padding()
-        .frame(width: 600, height: 400)
     }
 
     private func cancel() {
