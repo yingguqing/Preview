@@ -80,7 +80,7 @@ extension ScaleFactor: NameStringConvertible {
 }
 
 // MARK: - CoreUI Extensions
-extension NSEdgeInsets: Equatable { }
+extension NSEdgeInsets: @retroactive Equatable { }
 public func == (lhs: NSEdgeInsets, rhs: NSEdgeInsets) -> Bool {
     return lhs.top == rhs.top
     && lhs.left == rhs.left
@@ -122,7 +122,7 @@ extension CUIDeviceIdiom: AllValues {
     }
 }
 
-extension CUIDeviceIdiom: CustomStringConvertible {
+extension CUIDeviceIdiom: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
         case .universal: return "universal"
@@ -160,7 +160,7 @@ extension CUISubtype: ValueCorrectness, IncorrectValueAssertion {
     }
 }
 
-extension CUISubtype: CustomStringConvertible {
+extension CUISubtype: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
             case .normal:
@@ -199,7 +199,7 @@ extension CUIUserInterfaceSizeClass: ValueCorrectness, IncorrectValueAssertion {
     }
 }
 
-extension CUIUserInterfaceSizeClass: CustomStringConvertible {
+extension CUIUserInterfaceSizeClass: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
             case .any: return "any"
@@ -222,7 +222,7 @@ extension CUIRenderMode: ValueCorrectness, IncorrectValueAssertion {
     }
 }
 
-extension CUIRenderMode: CustomStringConvertible {
+extension CUIRenderMode: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
             case .original: return "original"
@@ -244,7 +244,7 @@ extension CUIResizingMode: ValueCorrectness, IncorrectValueAssertion {
     }
 }
 
-extension CUIResizingMode: CustomStringConvertible {
+extension CUIResizingMode: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
             case .tiles: return "tiles"
@@ -267,7 +267,7 @@ extension CUIImageType: ValueCorrectness, IncorrectValueAssertion {
     }
 }
 
-extension CUIImageType: CustomStringConvertible {
+extension CUIImageType: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
             case .none: return "none"
@@ -304,7 +304,7 @@ extension CUIGraphicalClass: ValueCorrectness, IncorrectValueAssertion {
     }
 }
 
-extension CUIGraphicalClass: CustomStringConvertible {
+extension CUIGraphicalClass: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
             case .default: return "default"
@@ -341,7 +341,7 @@ extension CUIMemoryClass: ValueCorrectness, IncorrectValueAssertion {
     }
 }
 
-extension CUIMemoryClass: CustomStringConvertible {
+extension CUIMemoryClass: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
             case .default: return "default"

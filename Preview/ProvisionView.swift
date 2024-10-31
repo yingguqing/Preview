@@ -10,11 +10,11 @@ import SwiftUI
 struct ProvisionView: View {
     @Environment(\.presentationMode) var presentationMode
     /// 需要特殊标明的测试设备
-    @State var devices: [Device] = Device.userDevices()
+    @StateObject var deviceManager: DeviceManager = .share
     @State var sorting = [KeyPathComparator(\Device.name)]
     @State var selecting = Set<Device.ID>()
-    @State var newDevice: Device? = nil
-    @State var selectDevice: Device?
+    @State var isShowSheet: Bool = false
+    @State var selectDevice: Device = .init()
     @State var message = ""
     private let xcodeQLPaths = [
         "/Applications/Xcode.app/Contents/Library/QuickLook/DVTProvisioningProfileQuicklookGenerator.qlgenerator",
@@ -29,7 +29,7 @@ struct ProvisionView: View {
         VStack(alignment: .leading, spacing: 0) {
             Text("添加需要特殊标识的测试设备")
                 .padding(.bottom, 10)
-            Table(devices, selection: $selecting, sortOrder: $sorting) {
+            Table(deviceManager.devices, selection: $selecting, sortOrder: $sorting) {
                 TableColumn("名称", value: \.name) { entity in
                     Text("\(entity.name)")
                 }.width(120)
@@ -38,20 +38,21 @@ struct ProvisionView: View {
                 }
             }
             .border()
-            .onChange(of: sorting) { devices.sort(using: $0) }
+            .onChange(of: sorting) { deviceManager.devices.sort(using: $0) }
             HStack(spacing: 2) {
                 Button("新增", action: {
                     selectDevice = Device()
-                    newDevice = selectDevice
+                    isShowSheet = true
                     selecting.removeAll()
                 })
                 Button("编辑", action: {
-                    guard let device = devices.first(where: { selecting.contains($0.id) }) else { return }
+                    guard let device = deviceManager.devices.first(where: { selecting.contains($0.id) }) else { return }
                     selectDevice = device
+                    isShowSheet = true
                     selecting.removeAll()
                 })
                 Button("删除", action: {
-                    devices.removeAll(where: { selecting.contains($0.id) })
+                    deviceManager.devices.removeAll(where: { selecting.contains($0.id) })
                     selecting.removeAll()
                 })
                 Spacer()
@@ -65,12 +66,12 @@ struct ProvisionView: View {
             HStack {
                 Spacer()
                 Button(action: save) {
-                    Text("保存").frame(width: 40, height: 12)
+                    Text("保存").frame(width: 80, height: 12)
                 }
                 .niceButton(backgroundColor: .blue)
-                Spacer().frame(width: 40)
+                Spacer()
                 Button(action: cancel) {
-                    Text("取消").frame(width: 40, height: 12)
+                    Text("取消").frame(width: 80, height: 12)
                 }
                 .keyboardShortcut(.cancelAction)
                 .niceButton()
@@ -89,12 +90,9 @@ struct ProvisionView: View {
         }
         .padding()
         .frame(width: 600, height: 400)
-        .sheet(item: $selectDevice, onDismiss: {
-            defer { newDevice = nil }
-            guard let newDevice = newDevice, newDevice.isValid, newDevice.isNew else { return }
-            devices.append(newDevice)
-        }, content: { device in
-            DeviceView().environmentObject(device)
+        .sheet(isPresented: $isShowSheet, content: {
+            DeviceView(device: selectDevice)
+                .environmentObject(deviceManager)
         })
     }
 
@@ -103,7 +101,7 @@ struct ProvisionView: View {
     }
 
     private func save() {
-        guard Set(devices.map({ $0.uuid })).count == devices.count else {
+        guard Set(deviceManager.devices.map({ $0.uuid })).count == deviceManager.devices.count else {
             message = "有相同UUID的设备"
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.message = ""
@@ -111,7 +109,7 @@ struct ProvisionView: View {
             return
         }
         presentationMode.wrappedValue.dismiss()
-        Device.save(devices: devices)
+        DeviceManager.share.save()
     }
 }
 

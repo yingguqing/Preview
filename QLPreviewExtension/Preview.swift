@@ -20,7 +20,7 @@ class Preview {
     
     lazy var currentTempDirFolder: String = Paths.TeamPath(isDeleteOld: true)
     /// 需要特殊标明的测试设备
-    var specialDevices: [Device] = Device.userDevices()
+    var specialDevices: [Device] = DeviceManager.share.devices
     var synthesizedInfo: [String: String] = ["ProvisionInfo": "",
                                              "BundleShortVersionString": Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "",
                                              "BundleVersion": Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""]

@@ -7,6 +7,27 @@
 
 import SwiftUI
 
+class DeviceManager: ObservableObject {
+    
+    static let share:DeviceManager = .init()
+    
+    @Published var devices: [Device] = DeviceManager.userDevices()
+    
+    func reload() {
+        self.devices = DeviceManager.userDevices()
+    }
+    
+    private class func userDevices() -> [Device] {
+        let divices = UserDefaults.share?.load(key: .Provision) as? [String: String] ?? [:]
+        return divices.map({ Device(name: $0.1, uuid: $0.0) })
+    }
+    
+    func save() {
+        let dic = Dictionary(uniqueKeysWithValues: self.devices.map({ ($0.uuid, $0.name) }))
+        UserDefaults.share?.save(key: .Provision, value: dic)
+    }
+}
+
 class Device: ObservableObject, Identifiable {
     @Published var name: String
     @Published var uuid: String
@@ -37,18 +58,6 @@ class Device: ObservableObject, Identifiable {
         guard let history = history else { return }
         self.name = history.name
         self.uuid = history.uuid
-    }
-}
-
-extension Device {
-    class func userDevices() -> [Device] {
-        let divices = UserDefaults.share?.load(key: .Provision) as? [String: String] ?? [:]
-        return divices.map({ Device(name: $0.1, uuid: $0.0) })
-    }
-    
-    class func save(devices:[Device]) {
-        let dic = Dictionary(uniqueKeysWithValues: devices.map({ ($0.uuid, $0.name) }))
-        UserDefaults.share?.save(key: .Provision, value: dic)
     }
 }
 
