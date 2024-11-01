@@ -38,7 +38,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_: Notification) {
-        _ = Process.execute("/usr/bin/qlmanage", arguments: ["-r", "cache"])
-        //_ = Process.execute(CommandLine.Qlmanage, arguments: ["-r"])
+        do {
+            let process = Process()
+            process.executableURL = URL(fileURLWithPath: "/usr/bin/qlmanage")
+            process.arguments = ["-r", "cache"]
+            try process.run()
+            process.waitUntilExit()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

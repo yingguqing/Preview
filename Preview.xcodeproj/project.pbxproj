@@ -19,7 +19,6 @@
 		4DE5184D2CC7798D00357084 /* ProvisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518462CC7798D00357084 /* ProvisionView.swift */; };
 		4DE5184E2CC7798D00357084 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518432CC7798D00357084 /* MainView.swift */; };
 		4DE5184F2CC7798D00357084 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518472CC7798D00357084 /* String.swift */; };
-		4DE518512CC7798D00357084 /* NSTask-execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518442CC7798D00357084 /* NSTask-execute.swift */; };
 		4DE518522CC7798D00357084 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518482CC7798D00357084 /* UserDefaults.swift */; };
 		4DE518532CC7798D00357084 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518492CC7798D00357084 /* Util.swift */; };
 		4DE518542CC7798D00357084 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE5184A2CC7798D00357084 /* View.swift */; };
@@ -31,7 +30,6 @@
 		4DE518682CC779DE00357084 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE5185A2CC779DE00357084 /* PreviewViewController.swift */; };
 		4DE518692CC779DE00357084 /* UnZipFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518602CC779DE00357084 /* UnZipFile.swift */; };
 		4DE5186A2CC77A1000357084 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518412CC7798D00357084 /* Device.swift */; };
-		4DE5186B2CC77A1000357084 /* NSTask-execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518442CC7798D00357084 /* NSTask-execute.swift */; };
 		4DE5186C2CC77A1000357084 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518472CC7798D00357084 /* String.swift */; };
 		4DE5186D2CC77A1000357084 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518482CC7798D00357084 /* UserDefaults.swift */; };
 		4DE5186E2CC77A1000357084 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518492CC7798D00357084 /* Util.swift */; };
@@ -99,7 +97,6 @@
 		4DE518412CC7798D00357084 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4DE518422CC7798D00357084 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
 		4DE518432CC7798D00357084 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		4DE518442CC7798D00357084 /* NSTask-execute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTask-execute.swift"; sourceTree = "<group>"; };
 		4DE518452CC7798D00357084 /* PreviewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewApp.swift; sourceTree = "<group>"; };
 		4DE518462CC7798D00357084 /* ProvisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvisionView.swift; sourceTree = "<group>"; };
 		4DE518472CC7798D00357084 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -212,7 +209,6 @@
 				4DE518412CC7798D00357084 /* Device.swift */,
 				4DE518422CC7798D00357084 /* DeviceView.swift */,
 				4DE518432CC7798D00357084 /* MainView.swift */,
-				4DE518442CC7798D00357084 /* NSTask-execute.swift */,
 				4DE518452CC7798D00357084 /* PreviewApp.swift */,
 				4DE518462CC7798D00357084 /* ProvisionView.swift */,
 				4DE518472CC7798D00357084 /* String.swift */,
@@ -436,7 +432,6 @@
 				4DE5184D2CC7798D00357084 /* ProvisionView.swift in Sources */,
 				4DE5184E2CC7798D00357084 /* MainView.swift in Sources */,
 				4DE5184F2CC7798D00357084 /* String.swift in Sources */,
-				4DE518512CC7798D00357084 /* NSTask-execute.swift in Sources */,
 				4DE518522CC7798D00357084 /* UserDefaults.swift in Sources */,
 				4DE518532CC7798D00357084 /* Util.swift in Sources */,
 				4DE518542CC7798D00357084 /* View.swift in Sources */,
@@ -449,7 +444,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE5186A2CC77A1000357084 /* Device.swift in Sources */,
-				4DE5186B2CC77A1000357084 /* NSTask-execute.swift in Sources */,
 				4DE5186C2CC77A1000357084 /* String.swift in Sources */,
 				4DE5186D2CC77A1000357084 /* UserDefaults.swift in Sources */,
 				4DE5186E2CC77A1000357084 /* Util.swift in Sources */,
