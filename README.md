@@ -62,6 +62,24 @@ Just clone the repository, open `Preview.xcodeproj` and build active target. She
 
 Created and maintained by 影孤清.
 
+## 可能遇到的问题
+
+您可能会发现您无法在`编辑器`菜单甚至`扩展`首选项窗格中看到该插件。这似乎是由于在 `App Store` 之外安装 `Xcode` 版本引起的。如果发生这种情况，请打开终端并运行：
+
+`pluginkit -m -p com.apple.dt.Xcode.extension.source-editor -A -D -vvv`
+
+如果在此列表中看不到插件，则可以通过在 Terminal 中运行以下命令来重置插件列表：
+
+```
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f /Applications/Xcode.app
+```
+
+再次打开软件即可
+
+如果系统设置的扩展里没有 `Xcode` 选项，可以尝试把 `Xcode` 重命名之后，再重启 `Xcode`。
+
+**注意：**编译没有选择账号或指定证书时，会导致在` Xcode`中不能显示，快捷键中也没有相应的选项。
+
 ## License
 
 `Preview` is available under the MIT license. See the [LICENSE.md](LICENSE.md) file for more info.
