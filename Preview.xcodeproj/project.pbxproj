@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CBA1DE22FCED67B0015D72F /* CoreUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CBA1DDE2FCED67B0015D72F /* CoreUI.h */; };
+		1CBA1DE32FCED67B0015D72F /* CoreUI_Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBA1DDF2FCED67B0015D72F /* CoreUI_Swift.swift */; };
+		1CBA1DE52FCED7280015D72F /* CoreUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CBA1DE42FCED7280015D72F /* CoreUI.framework */; };
 		4D75DB7C2CD22928008D3149 /* AssetsCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D75DB752CD22928008D3149 /* AssetsCatalog.swift */; };
-		4D75DB7D2CD22928008D3149 /* CoreUI_Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D75DB772CD22928008D3149 /* CoreUI_Swift.swift */; };
 		4D75DB7E2CD22928008D3149 /* ImageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D75DB782CD22928008D3149 /* ImageSet.swift */; };
 		4D75DB7F2CD22928008D3149 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D75DB7A2CD22928008D3149 /* Operation.swift */; };
 		4D75DB802CD22928008D3149 /* Acextract.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D75DB742CD22928008D3149 /* Acextract.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4D75DB812CD22928008D3149 /* CoreUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D75DB762CD22928008D3149 /* CoreUI.h */; };
 		4DE5183F2CC7793800357084 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 4DE5183E2CC7793800357084 /* Zip */; };
 		4DE5184B2CC7798D00357084 /* PreviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518452CC7798D00357084 /* PreviewApp.swift */; };
 		4DE5184C2CC7798D00357084 /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518422CC7798D00357084 /* DeviceView.swift */; };
@@ -33,7 +34,6 @@
 		4DE5186C2CC77A1000357084 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518472CC7798D00357084 /* String.swift */; };
 		4DE5186D2CC77A1000357084 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518482CC7798D00357084 /* UserDefaults.swift */; };
 		4DE5186E2CC77A1000357084 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE518492CC7798D00357084 /* Util.swift */; };
-		4DE518752CC77ABC00357084 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE518742CC77ABC00357084 /* Network.framework */; };
 		4DE5189F2CC77C2700357084 /* Acextract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE518852CC77BBE00357084 /* Acextract.framework */; };
 		4DE518A02CC77C2700357084 /* Acextract.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE518852CC77BBE00357084 /* Acextract.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4DE518A52CC77C7900357084 /* CoreUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE518A42CC77C7900357084 /* CoreUI.framework */; };
@@ -41,7 +41,7 @@
 		CE85E2D72647F5DA009E0DC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE85E2D62647F5DA009E0DC3 /* Assets.xcassets */; };
 		CE85E2DA2647F5DA009E0DC3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE85E2D92647F5DA009E0DC3 /* Preview Assets.xcassets */; };
 		CE85E2E92647F5FD009E0DC3 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE85E2E82647F5FD009E0DC3 /* Quartz.framework */; };
-		CE85E2F42647F5FD009E0DC3 /* QLPreviewExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE85E2E62647F5FD009E0DC3 /* QLPreviewExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CE85E2F42647F5FD009E0DC3 /* QLPreviewExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CE85E2E62647F5FD009E0DC3 /* QLPreviewExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,26 +73,28 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE85E2F82647F5FD009E0DC3 /* Embed App Extensions */ = {
+		CE85E2F82647F5FD009E0DC3 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				CE85E2F42647F5FD009E0DC3 /* QLPreviewExtension.appex in Embed App Extensions */,
+				CE85E2F42647F5FD009E0DC3 /* QLPreviewExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1CBA1DDE2FCED67B0015D72F /* CoreUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreUI.h; sourceTree = "<group>"; };
+		1CBA1DDF2FCED67B0015D72F /* CoreUI_Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUI_Swift.swift; sourceTree = "<group>"; };
+		1CBA1DE02FCED67B0015D72F /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		1CBA1DE42FCED7280015D72F /* CoreUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreUI.framework; path = ../../../../../../System/Library/PrivateFrameworks/CoreUI.framework; sourceTree = "<group>"; };
+		1CBA1DE62FCED86C0015D72F /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = ../../../../../../System/Library/Frameworks/Network.framework; sourceTree = "<group>"; };
 		4D75DB742CD22928008D3149 /* Acextract.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Acextract.h; sourceTree = "<group>"; };
 		4D75DB752CD22928008D3149 /* AssetsCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsCatalog.swift; sourceTree = "<group>"; };
-		4D75DB762CD22928008D3149 /* CoreUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreUI.h; sourceTree = "<group>"; };
-		4D75DB772CD22928008D3149 /* CoreUI_Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUI_Swift.swift; sourceTree = "<group>"; };
 		4D75DB782CD22928008D3149 /* ImageSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSet.swift; sourceTree = "<group>"; };
-		4D75DB792CD22928008D3149 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		4D75DB7A2CD22928008D3149 /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		4DE518412CC7798D00357084 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4DE518422CC7798D00357084 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
@@ -158,25 +160,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CBA1DE52FCED7280015D72F /* CoreUI.framework in Frameworks */,
 				CE85E2E92647F5FD009E0DC3 /* Quartz.framework in Frameworks */,
 				4DE5183F2CC7793800357084 /* Zip in Frameworks */,
 				4DE5189F2CC77C2700357084 /* Acextract.framework in Frameworks */,
-				4DE518752CC77ABC00357084 /* Network.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CBA1DE12FCED67B0015D72F /* CoreUI */ = {
+			isa = PBXGroup;
+			children = (
+				1CBA1DDE2FCED67B0015D72F /* CoreUI.h */,
+				1CBA1DDF2FCED67B0015D72F /* CoreUI_Swift.swift */,
+				1CBA1DE02FCED67B0015D72F /* module.modulemap */,
+			);
+			path = CoreUI;
+			sourceTree = "<group>";
+		};
 		4D75DB7B2CD22928008D3149 /* Acextract */ = {
 			isa = PBXGroup;
 			children = (
 				4D75DB742CD22928008D3149 /* Acextract.h */,
 				4D75DB752CD22928008D3149 /* AssetsCatalog.swift */,
-				4D75DB762CD22928008D3149 /* CoreUI.h */,
-				4D75DB772CD22928008D3149 /* CoreUI_Swift.swift */,
+				1CBA1DE12FCED67B0015D72F /* CoreUI */,
 				4D75DB782CD22928008D3149 /* ImageSet.swift */,
-				4D75DB792CD22928008D3149 /* module.modulemap */,
 				4D75DB7A2CD22928008D3149 /* Operation.swift */,
 			);
 			path = Acextract;
@@ -234,6 +244,8 @@
 		CE85E2E72647F5FD009E0DC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1CBA1DE62FCED86C0015D72F /* Network.framework */,
+				1CBA1DE42FCED7280015D72F /* CoreUI.framework */,
 				4DE518A62CC77C8600357084 /* CoreGraphics.framework */,
 				4DE518A42CC77C7900357084 /* CoreUI.framework */,
 				4DE518742CC77ABC00357084 /* Network.framework */,
@@ -267,7 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D75DB802CD22928008D3149 /* Acextract.h in Headers */,
-				4D75DB812CD22928008D3149 /* CoreUI.h in Headers */,
+				1CBA1DE22FCED67B0015D72F /* CoreUI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +313,7 @@
 				CE85E2C92647F5D8009E0DC3 /* Sources */,
 				CE85E2CA2647F5D8009E0DC3 /* Frameworks */,
 				CE85E2CB2647F5D8009E0DC3 /* Resources */,
-				CE85E2F82647F5FD009E0DC3 /* Embed App Extensions */,
+				CE85E2F82647F5FD009E0DC3 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -347,8 +359,9 @@
 		CE85E2C52647F5D8009E0DC3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 2650;
 				TargetAttributes = {
 					4DE518842CC77BBE00357084 = {
 						CreatedOnToolsVersion = 16.0;
@@ -416,8 +429,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CBA1DE32FCED67B0015D72F /* CoreUI_Swift.swift in Sources */,
 				4D75DB7C2CD22928008D3149 /* AssetsCatalog.swift in Sources */,
-				4D75DB7D2CD22928008D3149 /* CoreUI_Swift.swift in Sources */,
 				4D75DB7E2CD22928008D3149 /* ImageSet.swift in Sources */,
 				4D75DB7F2CD22928008D3149 /* Operation.swift in Sources */,
 			);
@@ -481,6 +494,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -526,6 +540,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -595,6 +610,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -617,6 +633,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -656,6 +673,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -671,6 +689,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -683,12 +702,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Preview/Preview.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Preview/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=macosx*]" = BX45AJXQR7;
+				DEVELOPMENT_TEAM = F35YF899E4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Preview/Info.plist;
@@ -700,7 +719,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = mac_any_dev;
+				REGISTER_APP_GROUPS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -714,12 +733,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Preview/Preview.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Preview/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=macosx*]" = BX45AJXQR7;
+				DEVELOPMENT_TEAM = F35YF899E4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Preview/Info.plist;
@@ -731,7 +750,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = mac_any_dev;
+				REGISTER_APP_GROUPS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
@@ -741,11 +760,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = QLPreviewExtension/QLPreviewExtension.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=macosx*]" = BX45AJXQR7;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = F35YF899E4;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = /System/Library/PrivateFrameworks;
 				INFOPLIST_FILE = QLPreviewExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -753,12 +773,21 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				OTHER_LDFLAGS = (
+					"-framework",
+					CoreUI,
+				);
+				OTHER_SWIFT_FLAGS = "-Xcc -F$(SDKROOT)/System/Library/PrivateFrameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview.QLPreviewExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = mac_any_dev;
+				REGISTER_APP_GROUPS = YES;
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Acextract/CoreUI";
+				SWIFT_SYSTEM_INCLUDE_PATHS = "$(SWIFT_SYSTEM_INCLUDE_PATHS) $(SDKROOT)/usr/lib/swift";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited) ";
+				SYSTEM_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -766,11 +795,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = QLPreviewExtension/QLPreviewExtension.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=macosx*]" = BX45AJXQR7;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = F35YF899E4;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = /System/Library/PrivateFrameworks;
 				INFOPLIST_FILE = QLPreviewExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -778,12 +808,21 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				OTHER_LDFLAGS = (
+					"-framework",
+					CoreUI,
+				);
+				OTHER_SWIFT_FLAGS = "-Xcc -F$(SDKROOT)/System/Library/PrivateFrameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yingguqing.Preview.QLPreviewExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = mac_any_dev;
+				REGISTER_APP_GROUPS = YES;
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Acextract/CoreUI";
+				SWIFT_SYSTEM_INCLUDE_PATHS = "$(SWIFT_SYSTEM_INCLUDE_PATHS) $(SDKROOT)/usr/lib/swift";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited) ";
+				SYSTEM_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};

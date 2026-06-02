@@ -8,7 +8,7 @@
 import Foundation
 import Acextract
 import Zip
-@_implementationOnly import Minizip
+import Minizip
 
 class UnZip {
     
